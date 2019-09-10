@@ -48,7 +48,7 @@ def get_page_content(content_file):
     participants_lines = []
     discussion_lines = []
     for line in lines:
-        if line == "# Discussion\n":
+        if line.find('# Discussion') >= 0:
             participants_lines.append(line.rstrip())
             break
         participants_lines.append(line.split('> ')[1].rstrip())
