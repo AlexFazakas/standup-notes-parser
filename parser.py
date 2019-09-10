@@ -33,10 +33,12 @@ def main(project_id, token, content_file, server):
     page_title = f'{current_date.day}/{current_date.month}/{current_date.year}'
     project.wikis.create({'title': page_slug.replace('/', ' '),
                           'content': page_content})
+    print('Created page with title {} and slug {}'.format(page_title, page_slug))
     standups_page.content = get_updated_standups_page(standups_page,
                                                       page_title,
                                                       page_slug)
     standups_page.save()
+    print('Updated standups page!')
 
 def get_updated_standups_page(standups_page, page_title, page_slug):
     return standups_page.content + f'\n\n[{page_title}]({page_slug})'
